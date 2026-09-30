@@ -80,7 +80,69 @@
     t = setTimeout(function () { el.remove(); }, 2200);
   }
 
-  /* ---- filters: categorie + type gecombineerd ---- */
+  /* ---------- drawers met slide-animatie ---------- */
+  var REDUCED = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  function openDrawer(d) {
+    if (!d) return;
+    if (d.__closeTimer) { clearTimeout(d.__closeTimer); d.__closeTimer = null; }
+    d.classList.remove("is-closing");
+    var p = d.querySelector(".drawer__panel");
+    if (p) p.classList.remove("is-closing");
+    d.hidden = false;
+  }
+
+  function closeDrawer(d) {
+    if (!d || d.hidden || d.__closeTimer) return;
+    var panel = d.querySelector(".drawer__panel");
+    if (!REDUCED && panel) {
+      d.classList.add("is-closing");
+      panel.classList.add("is-closing");
+      d.__closeTimer = setTimeout(function () {
+        d.__closeTimer = null;
+        d.hidden = true;
+        d.classList.remove("is-closing");
+        panel.classList.remove("is-closing");
+      }, 280);
+    } else {
+      d.hidden = true;
+    }
+  }
+
+  /* ---------- navigatie: Menu-knop rechts + slide-out-paneel ----------
+     Werkt ook op de bestaande pagina's zonder ze aan te passen:
+     - het menupaneel schuift nu vanaf de rechterkant in
+     - Home komt bovenaan de lijst te staan
+     - de Menu-knop wordt rechts in de header geplaatst              */
+  var menu = document.getElementById("menu");
+  if (menu) {
+    var mPanel = menu.querySelector(".drawer__panel");
+    if (mPanel) {
+      mPanel.classList.remove("drawer__panel--left");
+      mPanel.classList.add("drawer__panel--right", "drawer__panel--nav");
+    }
+    var mNav = menu.querySelector(".drawer__nav");
+    if (mNav && !mNav.querySelector('a[href="index.html"]')) {
+      var homeLink = document.createElement("a");
+      homeLink.href = "index.html";
+      homeLink.textContent = "Home";
+      if (/(^|\/)index\.html$/.test(location.pathname) || location.pathname.endsWith("/")) {
+        homeLink.className = "is-active";
+      }
+      mNav.insertBefore(homeLink, mNav.firstChild);
+    }
+    var actions = document.querySelector(".hdr__actions");
+    if (actions && !document.querySelector(".menu-btn")) {
+      var menuBtn = document.createElement("button");
+      menuBtn.type = "button";
+      menuBtn.className = "menu-btn";
+      menuBtn.setAttribute("data-open", "menu");
+      menuBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>Menu</span>';
+      actions.appendChild(menuBtn);
+    }
+  }
+
+  /* ---------- filters: categorie + type gecombineerd ---------- */
   var activeCat = "all", activeType = "all";
 
   function applyFilters() {
@@ -97,7 +159,7 @@
     if (cnt) cnt.textContent = visible;
   }
 
-  /* ---- collectiepagina: ?c=dames / heren / sale ---- */
+  /* ---------- collectiepagina: ?c=dames / heren / sale ---------- */
   var collTitle = document.querySelector("[data-coll-title]");
   if (collTitle) {
     var c = new URLSearchParams(location.search).get("c");
@@ -116,14 +178,14 @@
     }
   }
 
-  /* ---- globale click-afhandeling ---- */
+  /* ---------- globale click-afhandeling ---------- */
   document.addEventListener("click", function (e) {
     var o = e.target.closest("[data-open]");
-    if (o) { document.getElementById(o.dataset.open).hidden = false; return; }
+    if (o) { openDrawer(document.getElementById(o.dataset.open)); return; }
 
     if (e.target.closest("[data-close]") ||
         (e.target.classList && e.target.classList.contains("drawer"))) {
-      var d = e.target.closest(".drawer"); if (d) d.hidden = true; return;
+      closeDrawer(e.target.closest(".drawer")); return;
     }
 
     var a = e.target.closest("[data-add]");
@@ -156,10 +218,10 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") document.querySelectorAll(".drawer").forEach(function (d) { d.hidden = true; });
+    if (e.key === "Escape") document.querySelectorAll(".drawer:not([hidden])").forEach(closeDrawer);
   });
 
-  /* ---- sorteren ---- */
+  /* ---------- sorteren ---------- */
   var sel = document.querySelector("[data-sort]");
   if (sel) sel.addEventListener("change", function () {
     var g = document.querySelector("[data-grid]");
@@ -174,7 +236,7 @@
     cards.forEach(function (c) { g.appendChild(c); });
   });
 
-  /* ---- zoeken ---- */
+  /* ---------- zoeken ---------- */
   var si = document.querySelector("[data-search-input]");
   if (si) si.addEventListener("input", function () {
     var v = si.value.toLowerCase().trim();
@@ -192,7 +254,7 @@
       : '<p class="muted">Geen resultaten.</p>';
   });
 
-  /* ---- PDP-hydratie ---- */
+  /* ---------- PDP-hydratie ---------- */
   if (document.querySelector("[data-pdp-title]")) {
     var id = new URLSearchParams(location.search).get("id") || P[0].id;
     var p = byId[id] || P[0];
