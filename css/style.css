@@ -24,18 +24,13 @@ p{margin:0 0 1em}
 .link{border-bottom:1px solid currentColor;font-size:14px}
 code{background:var(--sand);padding:1px 5px;border-radius:var(--r);font-size:13px}
 
-/* ---------- beta-vlag ---------- */
-.beta-flag{
-  background:#ffd84d;color:#3a2f00;text-align:center;
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;font-weight:600;
-}
+/* ---------- verwijderd: gele beta-vlag ----------
+   Staat nog in oudere pagina's: CSS verbergt hem direct (zonder flits),
+   js/app.js haalt hem daarna volledig uit de pagina. */
+.beta-flag{display:none!important}
 
-/* ---------- announcement ---------- */
-.ann{background:var(--ink);color:#fff;overflow:hidden;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
-.ann__track{display:flex;gap:64px;white-space:nowrap;padding:9px 0;animation:marq 34s linear infinite}
-.ann__item{flex:0 0 auto}
-@keyframes marq{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ann__track{animation:none;justify-content:center}}
+/* ---------- verwijderd: scrollende announcement-balk ---------- */
+.ann{display:none!important}
 
 /* ---------- header ---------- */
 .hdr{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
@@ -54,14 +49,14 @@ code{background:var(--sand);padding:1px 5px;border-radius:var(--r);font-size:13p
 }
 
 /* ---------- navigatie ----------
-   De gecentreerde navigatiebalk is vervangen door een Menu-knop rechts in
-   de header, die een paneel vanaf de rechterkant laat inschuiven. */
-.hdr__burger{display:none!important}   /* legacy: oude burger-knop links */
+   Menu-knop vooraan in de header; het paneel schuift vanaf de
+   linkerkant in (regeling staat in js/app.js). */
+.hdr__burger{display:none!important}   /* legacy: oude burger-knop */
 .nav{display:none!important}           /* legacy: oude gecentreerde balk */
 
 .menu-btn{
   display:inline-flex;align-items:center;gap:9px;background:none;border:0;
-  padding:8px 12px;margin-left:6px;cursor:pointer;color:inherit;font-family:inherit;
+  padding:8px 12px;cursor:pointer;color:inherit;font-family:inherit;
   font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-radius:var(--r);
 }
 .menu-btn:hover{background:var(--sand)}
@@ -72,6 +67,11 @@ code{background:var(--sand);padding:1px 5px;border-radius:var(--r);font-size:13p
 .drawer[hidden]{display:none}
 .drawer.is-closing{animation:drawerFadeOut .25s ease forwards}
 .drawer__panel{position:absolute;background:#fff;display:flex;flex-direction:column;padding:18px;gap:14px;max-width:100%}
+.drawer__panel--nav{
+  top:0;left:0;bottom:0;width:min(420px,100%);
+  animation:drawerInLeft .32s cubic-bezier(.22,.61,.36,1);
+}
+.drawer__panel--nav.is-closing{animation:drawerOutLeft .28s cubic-bezier(.4,0,.6,1) forwards}
 .drawer__panel--right{
   top:0;right:0;bottom:0;width:400px;
   animation:drawerInRight .32s cubic-bezier(.22,.61,.36,1);
@@ -82,8 +82,7 @@ code{background:var(--sand);padding:1px 5px;border-radius:var(--r);font-size:13p
   animation:drawerInDown .3s cubic-bezier(.22,.61,.36,1);
 }
 .drawer__panel--top.is-closing{animation:drawerOutUp .26s ease forwards}
-.drawer__panel--left{top:0;left:0;bottom:0;width:320px} /* legacy */
-.drawer__panel--nav{width:min(420px,100%)}
+.drawer__panel--left{top:0;left:0;bottom:0;width:320px} /* legacy fallback */
 .drawer__head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
 .drawer__head .icon-btn{font-size:24px;line-height:1}
 .drawer__nav{display:flex;flex-direction:column;overflow:auto}
@@ -100,6 +99,8 @@ code{background:var(--sand);padding:1px 5px;border-radius:var(--r);font-size:13p
 .sr img{width:48px;height:60px;object-fit:cover}
 @keyframes drawerFadeIn{from{opacity:0}}
 @keyframes drawerFadeOut{to{opacity:0}}
+@keyframes drawerInLeft{from{transform:translateX(-100%)}}
+@keyframes drawerOutLeft{to{transform:translateX(-100%)}}
 @keyframes drawerInRight{from{transform:translateX(100%)}}
 @keyframes drawerOutRight{to{transform:translateX(100%)}}
 @keyframes drawerInDown{from{transform:translateY(-100%)}}
@@ -193,4 +194,13 @@ code{background:var(--sand);padding:1px 5px;border-radius:var(--r);font-size:13p
 
 /* ---------- split ---------- */
 .split{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;background:var(--sand)}
-.split
+.split img{height:100%;width:100%;object-fit:cover;min-height:340px}
+.split__copy{padding:clamp(24px,5vw,64px)}
+
+/* ---------- pdp ---------- */
+.pdp{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.pdp__media{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pdp__media img{aspect-ratio:4/5;object-fit:cover;background:var(--sand)}
+.pdp__price{font-size:19px;margin:6px 0 20px}
+.pdp__price s{color:var(--muted);margin-left:8px;font-size:15px}
+.label{font-size:11px;letter-spa
