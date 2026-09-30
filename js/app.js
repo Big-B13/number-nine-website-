@@ -109,17 +109,17 @@
     }
   }
 
-  /* ---------- navigatie: Menu-knop rechts + slide-out-paneel ----------
+  /* ---------- navigatie: Menu-knop links + slide-out-paneel ----------
      Werkt ook op de bestaande pagina's zonder ze aan te passen:
-     - het menupaneel schuift nu vanaf de rechterkant in
-     - Home komt bovenaan de lijst te staan
-     - de Menu-knop wordt rechts in de header geplaatst              */
+     - de Menu-knop wordt vooraan in de header geplaatst (voor het logo)
+     - het menupaneel schuift vanaf de linkerkant in
+     - Home komt bovenaan de lijst te staan                          */
   var menu = document.getElementById("menu");
   if (menu) {
     var mPanel = menu.querySelector(".drawer__panel");
     if (mPanel) {
-      mPanel.classList.remove("drawer__panel--left");
-      mPanel.classList.add("drawer__panel--right", "drawer__panel--nav");
+      mPanel.classList.remove("drawer__panel--left", "drawer__panel--right");
+      mPanel.classList.add("drawer__panel--nav");
     }
     var mNav = menu.querySelector(".drawer__nav");
     if (mNav && !mNav.querySelector('a[href="index.html"]')) {
@@ -131,16 +131,22 @@
       }
       mNav.insertBefore(homeLink, mNav.firstChild);
     }
-    var actions = document.querySelector(".hdr__actions");
-    if (actions && !document.querySelector(".menu-btn")) {
+    var hdrInner = document.querySelector(".hdr__inner");
+    if (hdrInner && !document.querySelector(".menu-btn")) {
       var menuBtn = document.createElement("button");
       menuBtn.type = "button";
       menuBtn.className = "menu-btn";
       menuBtn.setAttribute("data-open", "menu");
       menuBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>Menu</span>';
-      actions.appendChild(menuBtn);
+      hdrInner.insertBefore(menuBtn, hdrInner.firstChild);
     }
   }
+
+  /* ---------- beta-vlag + announcement-balk volledig verwijderen ---------- */
+  var flag = document.querySelector(".beta-flag");
+  if (flag) flag.remove();
+  var annBar = document.querySelector(".ann");
+  if (annBar) annBar.remove();
 
   /* ---------- filters: categorie + type gecombineerd ---------- */
   var activeCat = "all", activeType = "all";
