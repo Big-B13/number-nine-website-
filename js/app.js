@@ -109,11 +109,7 @@
     }
   }
 
-  /* ---------- navigatie: Menu-knop links + slide-out-paneel ----------
-     Werkt ook op de bestaande pagina's zonder ze aan te passen:
-     - de Menu-knop wordt vooraan in de header geplaatst (voor het logo)
-     - het menupaneel schuift vanaf de linkerkant in
-     - Home komt bovenaan de lijst te staan                          */
+  /* ---------- navigatie: Menu-knop links + slide-out-paneel ---------- */
   var menu = document.getElementById("menu");
   if (menu) {
     var mPanel = menu.querySelector(".drawer__panel");
@@ -142,7 +138,7 @@
     }
   }
 
-  /* ---------- beta-vlag + announcement-balk volledig verwijderen ---------- */
+  /* ---------- beta-vlag + announcement-balk verwijderen ---------- */
   var flag = document.querySelector(".beta-flag");
   if (flag) flag.remove();
   var annBar = document.querySelector(".ann");
@@ -274,6 +270,61 @@
     document.title = p.title + " | BETA STORE (beta)";
     document.querySelector("[data-pdp-add]").addEventListener("click", function () { add(p.id); });
   }
+
+  /* ---------- about-pagina: interactieve mediaspelers ---------- */
+  document.querySelectorAll("[data-player]").forEach(function (player) {
+    var playBtn = player.querySelector(".media-btn--play");
+    var thumb = player.querySelector(".media-scrubber__thumb");
+    if (!playBtn || !thumb) return;
+    var isPlaying = false;
+    var timer = null;
+    playBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        document.querySelectorAll("[data-player]").forEach(function (other) {
+          if (other !== player && other.__stopPlayer) other.__stopPlayer();
+        });
+        playBtn.setAttribute("aria-label", "Pauzeren");
+        playBtn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="8" width="2" height="8" fill="currentColor"/><rect x="13" y="8" width="2" height="8" fill="currentColor"/></svg>';
+        var pct = parseFloat(thumb.style.left) || 20;
+        timer = setInterval(function () {
+          pct = (pct + 0.5) % 100;
+          thumb.style.left = pct.toFixed(1) + "%";
+        }, 100);
+      } else {
+        stop();
+      }
+    });
+    function stop() {
+      isPlaying = false;
+      playBtn.setAttribute("aria-label", "Afspelen");
+      playBtn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/><polygon points="10 8 16 12 10 16" fill="currentColor"/></svg>';
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+    player.__stopPlayer = stop;
+
+    var scrubber = player.querySelector(".media-scrubber");
+    if (scrubber) {
+      scrubber.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var rect = scrubber.getBoundingClientRect();
+        var clickX = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+        var newPct = (clickX / rect.width) * 100;
+        thumb.style.left = newPct.toFixed(1) + "%";
+      });
+    }
+  });
+
+  /* ---------- about-pagina: taalkeuze toggle ---------- */
+  document.querySelectorAll(".lang-switch a").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelectorAll(".lang-switch a").forEach(function (x) { x.classList.remove("is-active"); });
+      btn.classList.add("is-active");
+      toast("Taal gewijzigd naar: " + btn.textContent.trim());
+    });
+  });
 
   render();
 })();
