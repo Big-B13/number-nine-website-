@@ -51,6 +51,7 @@ NAV = [
     ("Merken", "brands.html", None),
     ("Sale", "collection.html?c=sale", None),
     ("Winkels", "stores.html", None),
+    ("Pop-up Tour", "event.html", None),
     ("Over ons", "about.html", None),
 ]
 
@@ -212,6 +213,7 @@ FOOTER = f"""
       <a href="#">Cadeaubon</a></div>
     <div><h4>Over</h4>
       <a href="about.html">Over ons</a><a href="stores.html">Onze winkels</a>
+      <a href="event.html">Pop-up Tour</a>
       <a href="#">Werken bij</a><a href="#">Algemene voorwaarden</a><a href="#">Privacy</a></div>
     <div class="ftr__news"><h4>Nieuwsbrief</h4>
       <p class="muted small">Placeholder-formulier — verstuurt niets.</p>
@@ -275,6 +277,7 @@ def page(title, active, body):
 </main>
 {FOOTER}
 <script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>"""
@@ -292,6 +295,16 @@ def home():
     <div class="hero-card__copy"><h2>New in store</h2><span class="btn btn--light">Shop dames</span></div>
   </a>
 </section>
+
+<a class="tour-teaser" href="event.html">
+  <img src="img/tour/hero.jpg" alt="">
+  <div class="tour-teaser__copy">
+    <p class="tour-eyebrow">Pop-up tour &middot; Germany &middot; 2027</p>
+    <h2>ROUTE <span>NINE</span></h2>
+    <p>Dortmund, D&uuml;sseldorf, M&uuml;nchen, Berlijn &mdash; vier steden, twee weken per stad, en de grootste namen uit geur en mode op de gastenlijst.</p>
+    <span class="btn btn--light">Bekijk de tour</span>
+  </div>
+</a>
 
 <section class="usp">
   <div>Gratis verzending vanaf &euro;50</div><div>Zes winkels</div>

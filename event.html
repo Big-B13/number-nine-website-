@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="ROUTE NINE — the Number Nine pop-up tour through Dortmund, Düsseldorf, Munich and Berlin, spring and summer 2027.">
+<title>ROUTE NINE | Pop-up Tour Germany 2027</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%2315130f%22/%3E%3Ctext%20x%3D%2216%22%20y%3D%2222%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%2CArial%22%20font-size%3D%2217%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%3EB%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr__inner">
+    <button class="menu-btn" data-open="menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <span>Menu</span>
+    </button>
+    <a class="logo" href="index.html">BETA STORE</a>
+    <div class="hdr__actions">
+      <button class="icon-btn" aria-label="Zoeken" data-open="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
+      <a class="icon-btn" href="account.html" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      </a>
+      <button class="icon-btn" aria-label="Winkelmand" data-open="cart">
+        <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="menu" hidden>
+  <div class="drawer__panel drawer__panel--nav">
+    <div class="drawer__head"><strong>Menu</strong><button class="icon-btn" data-close>&times;</button></div>
+    <nav class="drawer__nav"><a class="drawer__top" href="index.html">Home</a><details><summary>Dames</summary><div class="drawer__sub"><a href="collection.html?c=dames"><strong>Alles in Dames</strong></a><a href="collection.html">Jassen</a><a href="collection.html">Truien &amp; vesten</a><a href="collection.html">Tops &amp; blouses</a><a href="collection.html">Jurken &amp; rokken</a><a href="collection.html">Broeken</a><a href="collection.html">Jeans</a><a href="collection.html">Tassen</a><a href="collection.html">Schoenen</a></div></details><details><summary>Heren</summary><div class="drawer__sub"><a href="collection.html?c=heren"><strong>Alles in Heren</strong></a><a href="collection.html">Jassen</a><a href="collection.html">Truien &amp; vesten</a><a href="collection.html">Overhemden</a><a href="collection.html">T-shirts</a><a href="collection.html">Broeken</a><a href="collection.html">Jeans</a><a href="collection.html">Tassen</a><a href="collection.html">Schoenen</a></div></details><a class="drawer__top" href="brands.html">Merken</a><a class="drawer__top" href="collection.html?c=sale">Sale</a><a class="drawer__top" href="stores.html">Winkels</a><a class="drawer__top is-active" href="event.html">Pop-up Tour</a><a class="drawer__top" href="about.html">Over ons</a></nav>
+  </div>
+</div>
+
+<div class="drawer" id="search" hidden>
+  <div class="drawer__panel drawer__panel--top">
+    <div class="drawer__head"><strong>Zoeken</strong><button class="icon-btn" data-close>&times;</button></div>
+    <input class="search-input" type="search" placeholder="Zoek op product of merk..." data-search-input>
+    <div class="search-results" data-search-results><p class="muted">Begin met typen om de testcatalogus te doorzoeken.</p></div>
+  </div>
+</div>
+
+<div class="drawer" id="cart" hidden>
+  <div class="drawer__panel drawer__panel--right">
+    <div class="drawer__head"><strong>Winkelmand</strong><button class="icon-btn" data-close>&times;</button></div>
+    <div class="cart-lines" data-cart-lines></div>
+    <div class="cart-foot">
+      <div class="cart-total"><span>Subtotaal</span><span data-cart-total>&euro;0,00</span></div>
+      <p class="muted small">Betaomgeving &mdash; afrekenen is uitgeschakeld.</p>
+      <a class="btn btn--block" href="cart.html">Naar winkelmand</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+<section class="tour-hero">
+  <img class="tour-hero__bg" src="img/tour/hero.jpg" alt="">
+  <div class="tour-hero__inner">
+    <p class="tour-eyebrow" data-i18n="hero.eyebrow">Pop-up tour · Germany · 2027</p>
+    <h1 class="tour-title">ROUTE <span>NINE</span></h1>
+    <p class="tour-sub" data-i18n="hero.sub">Four cities. Eleven weeks. One store that refuses to stand still.</p>
+    <p class="tour-lede" data-i18n="hero.lede">Number Nine packs up the shop floor and drives it into Germany. Dortmund, Düsseldorf, Munich, Berlin — two weeks in every city, a new space at every stop, and the loudest names in scent and fashion on the invite list.</p>
+    <div class="tour-cities">Dortmund <i>/</i> Düsseldorf <i>/</i> München <i>/</i> Berlin</div>
+    <div class="tour-cta">
+      <a class="btn btn--light" href="#rsvp" data-i18n="cta.guestlist">Join the guest list</a>
+      <a class="btn btn--outline-light" href="#space" data-i18n="cta.space">We need a space</a>
+    </div>
+    <p class="tour-status" data-i18n="hero.status">Status: concept. Dates, spaces and line-up are a working plan — nothing is signed, nobody is booked.</p>
+  </div>
+</section>
+<section class="tour-stats">
+  <div class="tour-stat"><strong>4</strong><span data-i18n="stat.0">cities</span></div>
+  <div class="tour-stat"><strong>58</strong><span data-i18n="stat.1">trading days</span></div>
+  <div class="tour-stat"><strong>11</strong><span data-i18n="stat.2">weeks on the road</span></div>
+  <div class="tour-stat"><strong>25</strong><span data-i18n="stat.3">creators invited</span></div>
+  <div class="tour-stat"><strong>9M+</strong><span data-i18n="stat.4">combined reach</span></div>
+</section>
+<div class="tour-page">
+<section class="tour-section" id="idea">
+  <p class="tour-eyebrow" data-i18n="idea.eyebrow">The idea</p>
+  <h2 class="tour-h2" data-i18n="idea.h">We are not opening a shop. We are going on tour.</h2>
+  <div class="idea-grid">
+    <article class="idea-card">
+      <h3 data-i18n="idea.0.h">Why Germany</h3>
+      <p data-i18n="idea.0.p">83 million people, the first stop an hour and a half from our own front door, and the densest fragrance-and-fashion creator scene in Europe. Almost none of them have heard of us. A webshop is never going to fix that. A room full of people might.</p>
+    </article>
+    <article class="idea-card">
+      <h3 data-i18n="idea.1.h">Why a pop-up and not a store</h3>
+      <p data-i18n="idea.1.p">We rent a raw space, build it out in four days and treat it like a stage instead of a shop. Everything in it is temporary — the rail, the drop, the people behind the counter — and that is exactly the reason anyone bothers to show up. You can visit a store next month. You cannot visit this next month.</p>
+    </article>
+    <article class="idea-card">
+      <h3 data-i18n="idea.2.h">Why creators carry it</h3>
+      <p data-i18n="idea.2.p">The fragrance corner of YouTube moves product like nothing else in retail, and the menswear channels right next to it have been selling each other's wardrobes for a decade. We are not buying a post. We are handing them a lit studio, a room full of their own audience and a bottle wall, and letting them do the thing they already do better than any agency.</p>
+    </article>
+  </div>
+  <blockquote class="tour-quote" data-i18n="idea.quote">Two weeks is long enough to become the place everybody is talking about, and short enough that nobody gets bored of it.</blockquote>
+</section>
+<section class="tour-section" id="route">
+  <p class="tour-eyebrow" data-i18n="route.eyebrow">The route</p>
+  <h2 class="tour-h2" data-i18n="route.h">Four stops, back to back, April to July 2027</h2>
+  <p class="tour-lede-dark" data-i18n="route.sub">Two weeks open, four days to build, three days to strike and drive. Same crew, same van, a different city every fortnight.</p>
+  <article class="stop">
+    <div class="stop__media"><img src="img/tour/dortmund.jpg" alt="Dortmund" loading="lazy">
+      <span class="stop__num">01</span></div>
+    <div class="stop__body">
+      <div class="stop__head"><h3>Dortmund</h3><span class="stop__badge" data-i18n="city.01.badge">The opener</span></div>
+      <div class="stop__meta"><span class="stop__dates" data-i18n="city.01.dates">Fri 23 April – Thu 6 May 2027</span><span class="stop__days" data-i18n="city.01.days">14 days open</span></div>
+      <p class="stop__hook" data-i18n="city.01.hook">We open where nobody opens. Dortmund is the youngest big city in the Ruhr: 600,000 people, a huge student population at TU Dortmund, and a retail scene that every brand doing a "German tour" skips straight past. We go first, we go loud, and from one van we reach Essen, Bochum and Duisburg in under half an hour by train.</p>
+      <dl class="stop__specs">
+        <dt data-i18n="city.01.district.l">District</dt><dd data-i18n="city.01.district">Unionviertel / Rheinische Straße, in the shadow of the Dortmunder U. Fallback: the Brückstraßenviertel.</dd>
+        <dt data-i18n="city.01.space.l">Space</dt><dd data-i18n="city.01.space">300–400 m² former industrial unit. Raw concrete, roller shutter, loading access, nothing precious.</dd>
+      </dl>
+      <p class="stop__night" data-i18n="city.01.night">Opening night Friday 23 April, 19:00 — invite only, 150 heads, local DJ, first city drop at midnight.</p>
+      <p class="stop__note" data-i18n="city.01.note">Matchday note: if BVB play at home that weekend there are 81,000 people in town. The drop gets planned around it.</p>
+    </div>
+  </article>
+  <article class="stop">
+    <div class="stop__media"><img src="img/tour/dusseldorf.jpg" alt="Düsseldorf" loading="lazy">
+      <span class="stop__num">02</span></div>
+    <div class="stop__body">
+      <div class="stop__head"><h3>Düsseldorf</h3><span class="stop__badge" data-i18n="city.02.badge">The industry stop</span></div>
+      <div class="stop__meta"><span class="stop__dates" data-i18n="city.02.dates">Fri 14 May – Thu 27 May 2027</span><span class="stop__days" data-i18n="city.02.days">14 days open</span></div>
+      <p class="stop__hook" data-i18n="city.02.hook">This is where German fashion does business: showrooms, agencies, buying offices, the trade-fair calendar. It is also the home turf of the German beauty industry — Henkel is headquartered here and L'Oréal runs its German business from the city. Everything that happens in this room happens in front of the people who can put us in other rooms. Smaller space, sharper guest list.</p>
+      <dl class="stop__specs">
+        <dt data-i18n="city.02.district.l">District</dt><dd data-i18n="city.02.district">Flingern-Nord around the Ackerstraße for the creative crowd, or a side street off the Kö for the luxury crowd. We would take either.</dd>
+        <dt data-i18n="city.02.space.l">Space</dt><dd data-i18n="city.02.space">200–300 m² showroom with floor-to-ceiling glass. The window is the campaign here.</dd>
+      </dl>
+      <p class="stop__night" data-i18n="city.02.night">Industry evening Wednesday 19 May — buyers, agencies, press. 80 seats, one short talk, no pitch deck.</p>
+      <p class="stop__note" data-i18n="city.02.note">Calendar check: the Düsseldorf trade-fair and Japan-Tag weekends pull huge crowds in May. If we can overlap one, we extend by three days.</p>
+    </div>
+  </article>
+  <article class="stop">
+    <div class="stop__media"><img src="img/tour/munich.jpg" alt="München" loading="lazy">
+      <span class="stop__num">03</span></div>
+    <div class="stop__body">
+      <div class="stop__head"><h3>München</h3><span class="stop__badge" data-i18n="city.03.badge">The money stop</span></div>
+      <div class="stop__meta"><span class="stop__dates" data-i18n="city.03.dates">Fri 4 June – Wed 16 June 2027</span><span class="stop__days" data-i18n="city.03.days">13 days open</span></div>
+      <p class="stop__hook" data-i18n="city.03.hook">The highest purchasing power in Germany and a clientele that already buys niche perfume at €250 a bottle without blinking. So we turn the volume down instead of up: mornings by appointment, afternoons open to the street, a perfumer masterclass instead of a DJ. Smallest room of the tour, highest average basket.</p>
+      <dl class="stop__specs">
+        <dt data-i18n="city.03.district.l">District</dt><dd data-i18n="city.03.district">Glockenbachviertel — Hans-Sachs-Straße or Reichenbachstraße. Fallback: Maxvorstadt near the academy.</dd>
+        <dt data-i18n="city.03.space.l">Space</dt><dd data-i18n="city.03.space">150–250 m² boutique. Daylight, wooden floor, a door people are not afraid to walk through.</dd>
+      </dl>
+      <p class="stop__night" data-i18n="city.03.night">Masterclass Saturday 12 June — scent building with a working perfumer. 24 seats, ticketed, sells out or we are doing it wrong.</p>
+      <p class="stop__note" data-i18n="city.03.note">Appointment mornings double as the shoot slot: quiet room, best light of the day, no queue in the background.</p>
+    </div>
+  </article>
+  <article class="stop">
+    <div class="stop__media"><img src="img/tour/berlin.jpg" alt="Berlin" loading="lazy">
+      <span class="stop__num">04</span></div>
+    <div class="stop__body">
+      <div class="stop__head"><h3>Berlin</h3><span class="stop__badge" data-i18n="city.04.badge">The finale</span></div>
+      <div class="stop__meta"><span class="stop__dates" data-i18n="city.04.dates">Fri 25 June – Sun 11 July 2027</span><span class="stop__days" data-i18n="city.04.days">17 days open — the finale</span></div>
+      <p class="stop__hook" data-i18n="city.04.hook">The loudest room of the lot, and the only stop where people turn up to a pop-up precisely because it is one. We stay the longest, we bring every creator who joined us earlier in the tour back for the closing weekend, and we aim the end of the run at the Berlin Fashion Week window in early July. If the calendar falls the way it usually does, the entire industry is already in town and we do not have to invite them.</p>
+      <dl class="stop__specs">
+        <dt data-i18n="city.04.district.l">District</dt><dd data-i18n="city.04.district">Mitte around Torstraße / Mulackstraße, or Kreuzberg on the Oranienstraße. Neukölln if the right building turns up.</dd>
+        <dt data-i18n="city.04.space.l">Space</dt><dd data-i18n="city.04.space">400–600 m², two floors if we can get them. An old Kaufhaus, a gallery or a showroom with a basement.</dd>
+      </dl>
+      <p class="stop__night" data-i18n="city.04.night">Closing weekend Fri 9 – Sun 11 July — full roster, a live recording, the last numbered drop and a party we are not announcing the address of until that afternoon.</p>
+      <p class="stop__note" data-i18n="city.04.note">Berlin is also where the recap film gets cut. Two editors travel with the tour from Dortmund onwards.</p>
+    </div>
+  </article>
+</section>
+<section class="tour-section" id="format">
+  <p class="tour-eyebrow" data-i18n="fmt.eyebrow">Inside the space</p>
+  <h2 class="tour-h2" data-i18n="fmt.h">Six things in every room, in every city</h2>
+  <div class="fmt-grid">
+    <article class="fmt-card">
+      <span class="fmt-card__num">01</span>
+      <h3 data-i18n="fmt.0.h">The Scent Bar</h3>
+      <p data-i18n="fmt.0.p">Forty-eight bottles on a lit back wall. Blind flights of five, scored on a card, and a one-page scent profile you take home. Nobody sells you anything until you ask what number three was.</p>
+    </article>
+    <article class="fmt-card">
+      <span class="fmt-card__num">02</span>
+      <h3 data-i18n="fmt.1.h">The Fitting Salon</h3>
+      <p data-i18n="fmt.1.p">Three curtained booths, two stylists, twenty-minute slots you book at the door. Walk in with nothing in mind, walk out knowing your size in every label we carry.</p>
+    </article>
+    <article class="fmt-card">
+      <span class="fmt-card__num">03</span>
+      <h3 data-i18n="fmt.2.h">Studio Nine</h3>
+      <p data-i18n="fmt.2.p">A lit corner with a backdrop, a mic and a ring of chairs. Free for every invited creator, all day, every day of the run. Film the haul, record the podcast, go live. We never see the edit before you post it.</p>
+    </article>
+    <article class="fmt-card">
+      <span class="fmt-card__num">04</span>
+      <h3 data-i18n="fmt.3.h">The Drop Wall</h3>
+      <p data-i18n="fmt.3.p">One city-exclusive piece per stop, numbered 1 to 99, sold in that room, in that city, in those two weeks only. Dortmund 01/99 does more for us than any press release ever will.</p>
+    </article>
+    <article class="fmt-card">
+      <span class="fmt-card__num">05</span>
+      <h3 data-i18n="fmt.4.h">The Programme</h3>
+      <p data-i18n="fmt.4.p">Evenings earn their keep: a perfumer masterclass, a styling battle with the local scene, a sneaker-care clinic, one open creator Q&amp;A and two DJ nights per stop.</p>
+    </article>
+    <article class="fmt-card">
+      <span class="fmt-card__num">06</span>
+      <h3 data-i18n="fmt.5.h">The Back Room</h3>
+      <p data-i18n="fmt.5.p">Coffee, sofas, phone chargers and absolutely nobody selling you anything. It is the reason people stay two hours instead of ten minutes, and two hours is the whole point.</p>
+    </article>
+  </div>
+  <div class="fmt-media">
+    <figure><img src="img/tour/scentbar.jpg" alt="" loading="lazy"><figcaption data-i18n="fmt.cap1">The scent bar — 48 bottles, blind, scored on a card.</figcaption></figure>
+    <figure><img src="img/tour/studio.jpg" alt="" loading="lazy"><figcaption data-i18n="fmt.cap2">Studio Nine — lit, free, and off limits to our marketing team.</figcaption></figure>
+  </div>
+</section>
+<section class="tour-section" id="lineup">
+  <p class="tour-eyebrow" data-i18n="line.eyebrow">The line-up</p>
+  <h2 class="tour-h2" data-i18n="line.h">Who we are going after</h2>
+  <div class="wishlist-warn"><strong data-i18n="line.warn.t">Wishlist, not a line-up.</strong><span data-i18n="line.warn.b"> Nobody on this page has been contacted, let alone booked. These are the names we want and the order we want them in. Approaches go out through management from December 2026. Follower counts are public figures from autumn 2026 and move constantly.</span></div>
+  <div class="tier">
+    <h3 class="tier__title" data-i18n="line.t0.h">Tier A — the headliners</h3>
+    <p class="tier__intro" data-i18n="line.t0.p">One per city if we land them. Approached first, through management, in December.</p>
+    <div class="tier__grid">
+      <article class="person">
+        <h4>Jeremy Fragrance</h4>
+        <span class="person__meta">2.5M YouTube</span>
+        <p data-i18n="line.t0.p0">German, and the single biggest name in fragrance on the planet. Dream slot: Düsseldorf or the Berlin finale.</p>
+        <span class="person__status" data-i18n="line.t0.s0">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Lorenz Wiedenmann</h4>
+        <span class="person__meta">~900k</span>
+        <p data-i18n="line.t0.p1">Costa Rican-German, minimalist menswear, taste that lines up almost exactly with our buying. Munich.</p>
+        <span class="person__status" data-i18n="line.t0.s1">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Gents Scents</h4>
+        <span class="person__meta">646k</span>
+        <p data-i18n="line.t0.p2">A pure fragrance audience with unusually high trust. Natural fit for the scent bar.</p>
+        <span class="person__status" data-i18n="line.t0.s2">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>CurlyFragrance (Michella)</h4>
+        <span class="person__meta">592k</span>
+        <p data-i18n="line.t0.p3">The biggest female voice in the men's fragrance world and a brand founder herself.</p>
+        <span class="person__status" data-i18n="line.t0.s3">Invite planned</span>
+      </article>
+    </div>
+  </div>
+  <div class="tier">
+    <h3 class="tier__title" data-i18n="line.t1.h">Tier B — the scent floor</h3>
+    <p class="tier__intro" data-i18n="line.t1.p">Reviewers and collectors. The people whose opinion decides whether a bottle sells out.</p>
+    <div class="tier__grid">
+      <article class="person">
+        <h4>Max Forti</h4>
+        <span class="person__meta">442k</span>
+        <p data-i18n="line.t1.p0">Long-running, high engagement, European base.</p>
+        <span class="person__status" data-i18n="line.t1.s0">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Triple B</h4>
+        <span class="person__meta">362k</span>
+        <p data-i18n="line.t1.p1">Grooming and fragrance, strong male 18–34 audience.</p>
+        <span class="person__status" data-i18n="line.t1.s1">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Olivia Olfactory</h4>
+        <span class="person__meta">~400k</span>
+        <p data-i18n="line.t1.p2">Enormous average views per video. Berlin finale.</p>
+        <span class="person__status" data-i18n="line.t1.s2">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Demi Rawling</h4>
+        <span class="person__meta">368k</span>
+        <p data-i18n="line.t1.p3">Luxury fragrance reviews, international reach.</p>
+        <span class="person__status" data-i18n="line.t1.s3">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Soki London</h4>
+        <span class="person__meta">UK</span>
+        <p data-i18n="line.t1.p4">Founder-creator. Perfect for the masterclass in Munich.</p>
+        <span class="person__status" data-i18n="line.t1.s4">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Monika Cioch</h4>
+        <span class="person__meta">120k</span>
+        <p data-i18n="line.t1.p5">Luxury and niche, a female audience we underserve.</p>
+        <span class="person__status" data-i18n="line.t1.s5">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>The Scented (Yana)</h4>
+        <span class="person__meta">127k</span>
+        <p data-i18n="line.t1.p6">Unfiltered reviews. Credibility we cannot buy.</p>
+        <span class="person__status" data-i18n="line.t1.s6">Invite planned</span>
+      </article>
+    </div>
+  </div>
+  <div class="tier">
+    <h3 class="tier__title" data-i18n="line.t2.h">Tier C — the fashion floor</h3>
+    <p class="tier__intro" data-i18n="line.t2.p">Menswear and style channels. These are the people who make a rail look worth flying for.</p>
+    <div class="tier__grid">
+      <article class="person">
+        <h4>Tim Dessaint</h4>
+        <span class="person__meta">YouTube</span>
+        <p data-i18n="line.t2.p0">The European benchmark for men's style content.</p>
+        <span class="person__status" data-i18n="line.t2.s0">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Daniel Simmons</h4>
+        <span class="person__meta">YouTube</span>
+        <p data-i18n="line.t2.p1">Street style, fitness, lifestyle crossover.</p>
+        <span class="person__status" data-i18n="line.t2.s1">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Jesper Søndergaard</h4>
+        <span class="person__meta">IG 900k+</span>
+        <p data-i18n="line.t2.p2">Scandinavian minimalism, huge short-form reach.</p>
+        <span class="person__status" data-i18n="line.t2.s2">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Kosta Williams</h4>
+        <span class="person__meta">YouTube</span>
+        <p data-i18n="line.t2.p3">Educational menswear. Ideal for the Düsseldorf talk.</p>
+        <span class="person__status" data-i18n="line.t2.s3">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>One Dapper Street (Marcel Floruss)</h4>
+        <span class="person__meta">DE/US</span>
+        <p data-i18n="line.t2.p4">German-born, New York-based, the bridge to the US audience.</p>
+        <span class="person__status" data-i18n="line.t2.s4">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Vintagebursche (Niklas)</h4>
+        <span class="person__meta">DE</span>
+        <p data-i18n="line.t2.p5">Classic German menswear and tailoring nerdery.</p>
+        <span class="person__status" data-i18n="line.t2.s5">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Der Stilberater (Justus Hansen)</h4>
+        <span class="person__meta">DE</span>
+        <p data-i18n="line.t2.p6">Style education in German. Dortmund opener.</p>
+        <span class="person__status" data-i18n="line.t2.s6">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Joshiiks</h4>
+        <span class="person__meta">DE</span>
+        <p data-i18n="line.t2.p7">Gen-Z streetwear. The one who brings the queue.</p>
+        <span class="person__status" data-i18n="line.t2.s7">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Johannes Huebl</h4>
+        <span class="person__meta">IG 1.1M</span>
+        <p data-i18n="line.t2.p8">Elevated classic menswear. Munich, by appointment.</p>
+        <span class="person__status" data-i18n="line.t2.s8">Invite planned</span>
+      </article>
+    </div>
+  </div>
+  <div class="tier">
+    <h3 class="tier__title" data-i18n="line.t3.h">Tier D — the city locals</h3>
+    <p class="tier__intro" data-i18n="line.t3.p">The ones who actually fill the room on a Tuesday. Smaller numbers, far better turnout.</p>
+    <div class="tier__grid">
+      <article class="person">
+        <h4>Dortmund</h4>
+        <span class="person__meta">shortlist open</span>
+        <p data-i18n="line.t3.p0">Ruhr-based creators plus TU Dortmund student media. Scouting trip in November.</p>
+        <span class="person__status" data-i18n="line.t3.s0">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Düsseldorf</h4>
+        <span class="person__meta">industry</span>
+        <p data-i18n="line.t3.p1">The showroom and agency scene, plus NRW street-style creators.</p>
+        <span class="person__status" data-i18n="line.t3.s1">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>München</h4>
+        <span class="person__meta">Mitsou Jung · Jacqueline Krapf</span>
+        <p data-i18n="line.t3.p2">Munich fashion and lifestyle voices with a genuinely local following.</p>
+        <span class="person__status" data-i18n="line.t3.s2">Invite planned</span>
+      </article>
+      <article class="person">
+        <h4>Berlin</h4>
+        <span class="person__meta">TingTing Lai · Mari Rassis · woistlena · Dalia Mya</span>
+        <p data-i18n="line.t3.p3">Four very different Berlin audiences. Together they are the closing weekend.</p>
+        <span class="person__status" data-i18n="line.t3.s3">Invite planned</span>
+      </article>
+    </div>
+  </div>
+  <div class="offer">
+    <h3 data-i18n="offer.h">What a creator actually gets</h3>
+    <ul>
+      <li data-i18n="offer.0">Travel and hotel covered, every time, no exceptions.</li>
+      <li data-i18n="offer.1">A lit studio they can use unsupervised, all day, every day of the run.</li>
+      <li data-i18n="offer.2">A numbered drop piece, with their name on the tag if they want one.</li>
+      <li data-i18n="offer.3">A flat fee for a confirmed appearance. We do not pay in exposure.</li>
+      <li data-i18n="offer.4">Zero content approval. We do not read it before it goes up, ever.</li>
+    </ul>
+  </div>
+</section>
+<section class="tour-section" id="rhythm">
+  <p class="tour-eyebrow" data-i18n="week.eyebrow">The rhythm</p>
+  <h2 class="tour-h2" data-i18n="week.h">One week in a pop-up</h2>
+  <div class="week">
+    <div class="week__row"><span class="week__day" data-i18n="week.0.d">Mon</span><span class="week__hours" data-i18n="week.0.h">Closed</span><span class="week__what" data-i18n="week.0.w">Restock, repairs, creator filming day in an empty room.</span></div>
+    <div class="week__row"><span class="week__day" data-i18n="week.1.d">Tue</span><span class="week__hours" data-i18n="week.1.h">12:00 – 19:00</span><span class="week__what" data-i18n="week.1.w">Scent bar open, styling slots bookable at the door.</span></div>
+    <div class="week__row"><span class="week__day" data-i18n="week.2.d">Wed</span><span class="week__hours" data-i18n="week.2.h">12:00 – 19:00</span><span class="week__what" data-i18n="week.2.w">Industry and press evening from 19:30.</span></div>
+    <div class="week__row"><span class="week__day" data-i18n="week.3.d">Thu</span><span class="week__hours" data-i18n="week.3.h">12:00 – 21:00</span><span class="week__what" data-i18n="week.3.w">Late night. Workshop slot at 19:00.</span></div>
+    <div class="week__row"><span class="week__day" data-i18n="week.4.d">Fri</span><span class="week__hours" data-i18n="week.4.h">12:00 – 22:00</span><span class="week__what" data-i18n="week.4.w">Creator takeover, DJ from 20:00.</span></div>
+    <div class="week__row"><span class="week__day" data-i18n="week.5.d">Sat</span><span class="week__hours" data-i18n="week.5.h">11:00 – 20:00</span><span class="week__what" data-i18n="week.5.w">The big one. Drop release at 13:00 sharp.</span></div>
+    <div class="week__row"><span class="week__day" data-i18n="week.6.d">Sun</span><span class="week__hours" data-i18n="week.6.h">13:00 – 18:00</span><span class="week__what" data-i18n="week.6.w">Slow Sunday: coffee, the archive rail, no music over 70 dB.</span></div>
+  </div>
+</section>
+<section class="tour-section" id="numbers">
+  <p class="tour-eyebrow" data-i18n="num.eyebrow">The numbers</p>
+  <h2 class="tour-h2" data-i18n="num.h">What we are aiming at</h2>
+  <p class="tour-lede-dark" data-i18n="num.sub">Targets, not promises. If we hit two thirds of this, tour two happens in 2028.</p>
+  <div class="target-grid">
+    <div class="target"><strong>5,600</strong><span data-i18n="target.0">visitors across four stops</span></div>
+    <div class="target"><strong>25</strong><span data-i18n="target.1">creators hosted</span></div>
+    <div class="target"><strong>150+</strong><span data-i18n="target.2">pieces of content</span></div>
+    <div class="target"><strong>25M+</strong><span data-i18n="target.3">impressions</span></div>
+    <div class="target"><strong>6,000</strong><span data-i18n="target.4">email signups</span></div>
+    <div class="target"><strong>396</strong><span data-i18n="target.5">numbered drop pieces</span></div>
+  </div>
+  <h3 class="budget-h" data-i18n="budget.h">Indicative budget</h3>
+  <table class="budget"><tbody>
+    <tr><td data-i18n="budget.0">Space rental — 4 × 2 weeks, incl. deposits</td><td>€48,000</td></tr>
+    <tr><td data-i18n="budget.1">Build, interior, transport</td><td>€32,000</td></tr>
+    <tr><td data-i18n="budget.2">Crew, travel, accommodation</td><td>€36,000</td></tr>
+    <tr><td data-i18n="budget.3">Creator hosting and fees</td><td>€40,000</td></tr>
+    <tr><td data-i18n="budget.4">Programme and production</td><td>€18,000</td></tr>
+    <tr><td data-i18n="budget.5">Content, film, paid amplification</td><td>€25,000</td></tr>
+    <tr><td data-i18n="budget.6">Contingency 10%</td><td>€20,000</td></tr>
+    <tr class="budget__total"><td><span data-i18n="budget.total">Total, indicative</span></td><td>≈ €219,000</td></tr>
+  </tbody></table>
+  <p class="muted small" data-i18n="budget.note">Placeholder figures for the planning conversation — not a quote. Rent is the number that moves most; a Berlin ground floor in July can swing it by €15,000 on its own.</p>
+</section>
+<section class="tour-section tour-section--blue" id="space">
+  <p class="tour-eyebrow" data-i18n="space.eyebrow">For landlords and agents</p>
+  <h2 class="tour-h2" data-i18n="space.h">This is the space we are looking for</h2>
+  <ul class="space-list">
+    <li data-i18n="space.0">150–600 m² on the ground floor, with street-facing windows.</li>
+    <li data-i18n="space.1">Temporary lease of 18–21 days, including build-up and strike.</li>
+    <li data-i18n="space.2">Three-phase power, 32A. A water connection if it exists.</li>
+    <li data-i18n="space.3">Ceiling height from 3.2 m and access for a loading van.</li>
+    <li data-i18n="space.4">Ten minutes on foot from the main shopping or creative district.</li>
+    <li data-i18n="space.5">Fully insured, professional build crew, handed back exactly as found.</li>
+  </ul>
+  <div class="tour-cta"><a class="btn btn--light" href="#rsvp" data-i18n="space.cta">Send us a space</a></div>
+</section>
+<section class="tour-section" id="roadmap">
+  <p class="tour-eyebrow" data-i18n="road.eyebrow">The road to opening</p>
+  <h2 class="tour-h2" data-i18n="road.h">From this page to a queue in Dortmund</h2>
+  <ol class="road">
+    <li><span class="road__when" data-i18n="road.0.w">Oct 2026</span><span class="road__what" data-i18n="road.0.t">Concept locked, budget approved, city shortlist agreed.</span></li>
+    <li><span class="road__when" data-i18n="road.1.w">Nov 2026</span><span class="road__what" data-i18n="road.1.t">Agents briefed in all four cities. First viewings and a scouting trip.</span></li>
+    <li><span class="road__when" data-i18n="road.2.w">Dec 2026</span><span class="road__what" data-i18n="road.2.t">Letters of intent on four spaces. First creator approaches through management.</span></li>
+    <li><span class="road__when" data-i18n="road.3.w">Jan – Feb 2027</span><span class="road__what" data-i18n="road.3.t">Contracts signed, build designed, brand partners on board.</span></li>
+    <li><span class="road__when" data-i18n="road.4.w">Mar 2027</span><span class="road__what" data-i18n="road.4.t">Public announcement, guest list opens, press embargo lifts.</span></li>
+    <li><span class="road__when" data-i18n="road.5.w">Apr 2027</span><span class="road__what" data-i18n="road.5.t">Dortmund opens. Everything after this is live.</span></li>
+    <li><span class="road__when" data-i18n="road.6.w">Jul 2027</span><span class="road__what" data-i18n="road.6.t">Berlin finale, recap film, and the decision on tour number two.</span></li>
+  </ol>
+</section>
+<section class="tour-section" id="partners">
+  <p class="tour-eyebrow" data-i18n="part.eyebrow">Partners</p>
+  <h2 class="tour-h2" data-i18n="part.h">Three ways to stand in the room with us</h2>
+  <div class="partner-grid">
+    <article class="partner">
+      <h3 data-i18n="part.0.h">Title partner</h3>
+      <span class="partner__slots" data-i18n="part.0.s">1 available</span>
+      <p data-i18n="part.0.p">Your name next to the tour name, on every asset in all four cities, plus one evening of the programme that is entirely yours.</p>
+    </article>
+    <article class="partner">
+      <h3 data-i18n="part.1.h">Floor partner</h3>
+      <span class="partner__slots" data-i18n="part.1.s">4 available</span>
+      <p data-i18n="part.1.p">One city each. A product wall in the space, a co-branded numbered drop and your team on the guest list.</p>
+    </article>
+    <article class="partner">
+      <h3 data-i18n="part.2.h">Friends of the tour</h3>
+      <span class="partner__slots" data-i18n="part.2.s">open</span>
+      <p data-i18n="part.2.p">Coffee, drinks, sound, print, transport. You supply it, we use it in front of everybody and credit you properly.</p>
+    </article>
+  </div>
+</section>
+<section class="tour-section" id="faq">
+  <p class="tour-eyebrow" data-i18n="faq.eyebrow">Questions</p>
+  <h2 class="tour-h2" data-i18n="faq.h">The ones everybody asks first</h2>
+  <div class="faq">
+    <details><summary data-i18n="faq.0.q">Is any of this actually booked?</summary><p data-i18n="faq.0.a">No. Every date, every space and every name on this page is a plan. Nothing is signed and no creator has been approached yet. This page exists so that everybody involved is looking at the same plan.</p></details>
+    <details><summary data-i18n="faq.1.q">Why not one big store for two months?</summary><p data-i18n="faq.1.a">Because week five in the same city is dead. Week one is curiosity, week two is word of mouth, and then it flattens. We leave while there is still a queue — that queue is the entire marketing budget.</p></details>
+    <details><summary data-i18n="faq.2.q">Why these four cities?</summary><p data-i18n="faq.2.a">Reach in the Ruhr (Dortmund), the industry (Düsseldorf), the money (Munich) and the noise (Berlin). Between them they cover the north-west, the south and the capital, and they are all within a day's drive of each other and of us.</p></details>
+    <details><summary data-i18n="faq.3.q">Can I just walk in?</summary><p data-i18n="faq.3.a">Yes. Everything during opening hours is free to walk into. Opening nights, the masterclass and the closing party are RSVP, and the guest list opens in March 2027.</p></details>
+    <details><summary data-i18n="faq.4.q">Do you sell the whole collection there?</summary><p data-i18n="faq.4.a">No. A curated rail per city plus one numbered city drop. The full collection stays online, and the room stays a room instead of a warehouse.</p></details>
+    <details><summary data-i18n="faq.5.q">How do creators get involved?</summary><p data-i18n="faq.5.a">Through the form below or through management. We cover travel and hotel, we pay a fee for a confirmed appearance, and we never ask to see the content before it goes up.</p></details>
+  </div>
+</section>
+<section class="tour-section rsvp" id="rsvp">
+  <p class="tour-eyebrow" data-i18n="rsvp.eyebrow">Stay close</p>
+  <h2 class="tour-h2" data-i18n="rsvp.h">Guest list, creators, partners, spaces</h2>
+  <p class="tour-lede-dark" data-i18n="rsvp.p">One form for all four. Tell us which city you are in and what you want to do there — we read every one of these ourselves.</p>
+  <form class="rsvp-form" onsubmit="return false;">
+    <input type="text" placeholder="Name" data-i18n-ph="rsvp.ph.name" required>
+    <input type="email" placeholder="Email" data-i18n-ph="rsvp.ph.mail" required>
+    <select>
+      <option value="guest" data-i18n="rsvp.opt.guest">I want to visit</option>
+      <option value="creator" data-i18n="rsvp.opt.creator">I am a creator</option>
+      <option value="partner" data-i18n="rsvp.opt.partner">I want to partner</option>
+      <option value="space" data-i18n="rsvp.opt.space">I have a space</option>
+      <option value="press" data-i18n="rsvp.opt.press">Press</option>
+    </select>
+    <select>
+      <option value="all" data-i18n="rsvp.city.all">Any city</option>
+      <option value="dortmund" data-i18n="rsvp.city.dortmund">Dortmund</option>
+      <option value="dusseldorf" data-i18n="rsvp.city.dusseldorf">Düsseldorf</option>
+      <option value="munich" data-i18n="rsvp.city.munich">München</option>
+      <option value="berlin" data-i18n="rsvp.city.berlin">Berlin</option>
+    </select>
+    <button class="btn" type="submit" data-i18n="rsvp.send">Put me on the list</button>
+  </form>
+  <p class="muted small" data-i18n="rsvp.note">Placeholder form — nothing is sent anywhere yet. Until it is wired up, mail tour@numbernine.example.</p>
+</section>
+</div>
+</main>
+
+<footer class="ftr">
+  <div class="ftr__grid">
+    <div><h4>Klantenservice</h4>
+      <a href="#">Verzending</a><a href="#">Retourneren</a><a href="#">Maattabel</a>
+      <a href="#">Veelgestelde vragen</a><a href="#">Contact</a></div>
+    <div><h4>Shoppen</h4>
+      <a href="collection.html?c=dames">Dames</a><a href="collection.html?c=heren">Heren</a>
+      <a href="brands.html">Merken</a><a href="collection.html?c=sale">Sale</a>
+      <a href="#">Cadeaubon</a></div>
+    <div><h4>Over</h4>
+      <a href="about.html">Over ons</a><a href="stores.html">Onze winkels</a>
+      <a href="event.html">Pop-up Tour</a><a href="#">Werken bij</a><a href="#">Privacy</a></div>
+    <div class="ftr__news"><h4>Nieuwsbrief</h4>
+      <p class="muted small">Placeholder-formulier &mdash; verstuurt niets.</p>
+      <form class="news" onsubmit="return false;">
+        <input type="email" placeholder="jouw@email.nl" required>
+        <button class="btn" type="submit">Aanmelden</button>
+      </form>
+      <div class="pay"><span>iDEAL</span><span>Klarna</span><span>PayPal</span><span>Visa</span></div>
+    </div>
+  </div>
+  <div class="ftr__bar">
+    <span>&copy; 2026 BETA STORE &mdash; Concept store testomgeving</span>
+    <span>Prijzen incl. btw &bull; Geen offici&euml;le shop</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/tour-i18n.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
