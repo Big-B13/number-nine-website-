@@ -15,6 +15,11 @@
 (function () {
   "use strict";
 
+  /* event.html bakt dit script in; voorkom dubbel koppelen als een
+     pagina het daarnaast ook nog als los bestand laadt. */
+  if (window.__N9_I18N__) return;
+  window.__N9_I18N__ = true;
+
   var LANGS = ["en", "nl", "de"];
   var LABEL = { en: "ENG", nl: "NL", de: "DE" };
   var KEY = "n9-lang";

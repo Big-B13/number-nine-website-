@@ -20,6 +20,50 @@ import pathlib
 ROOT = pathlib.Path(__file__).parent
 
 # --------------------------------------------------------------------------
+# zelfstandige pagina: css, js en beelden worden in event.html ingebakken, zodat
+# de pagina er ook goed uitziet zonder webserver (bestandsviewer, dubbelklik,
+# als los bestand doorsturen). Over http wint css/style.css alsnog, omdat de
+# <link> na de <style> staat.
+# --------------------------------------------------------------------------
+IMG_SPECS = {                       # bestand: (maximale breedte, jpeg-kwaliteit)
+    "img/tour/hero.jpg":       (1500, 70),
+    "img/tour/dortmund.jpg":   (880, 70),
+    "img/tour/dusseldorf.jpg": (880, 70),
+    "img/tour/munich.jpg":     (880, 70),
+    "img/tour/berlin.jpg":     (880, 70),
+    "img/tour/scentbar.jpg":   (900, 70),
+    "img/tour/studio.jpg":     (900, 70),
+}
+_img_cache = {}
+
+
+def data_uri(path):
+    """Verkleinde jpeg als data-URI. Zonder Pillow valt hij terug op het pad."""
+    if path in _img_cache:
+        return _img_cache[path]
+    try:
+        from PIL import Image
+        import base64, io
+        w, q = IMG_SPECS.get(path, (1100, 70))
+        im = Image.open(ROOT / path).convert("RGB")
+        if im.width > w:
+            im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
+        buf = io.BytesIO()
+        im.save(buf, "JPEG", quality=q, optimize=True, progressive=True)
+        uri = "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+    except Exception as exc:                      # geen Pillow / geen bestand
+        print(f"  ! {path} niet ingebakken ({exc}) — pad blijft relatief")
+        uri = path
+    _img_cache[path] = uri
+    return uri
+
+
+def read_asset(rel):
+    f = ROOT / rel
+    return f.read_text(encoding="utf-8") if f.exists() else ""
+
+
+# --------------------------------------------------------------------------
 # vertalingen: key -> (EN, NL, DE)
 # --------------------------------------------------------------------------
 TX = {}
@@ -821,7 +865,7 @@ def build():
 
     # ---------------- hero
     add('<section class="tour-hero">')
-    add('  <img class="tour-hero__bg" src="img/tour/hero.jpg" alt="">')
+    add('  <img class="tour-hero__bg" src="' + data_uri("img/tour/hero.jpg") + '" alt="">')
     add('  <div class="tour-hero__inner">')
     add('    ' + el("p", "hero.eyebrow", *HERO["eyebrow"], cls="tour-eyebrow"))
     add('    <h1 class="tour-title">ROUTE <span>NINE</span></h1>')
@@ -882,7 +926,7 @@ def build():
     for c in CITIES:
         p = f'city.{c["n"]}'
         add('  <article class="stop">')
-        add(f'    <div class="stop__media"><img src="{c["img"]}" alt="{c["city"]}" loading="lazy">')
+        add(f'    <div class="stop__media"><img src="{data_uri(c["img"])}" alt="{c["city"]}" loading="lazy">')
         add(f'      <span class="stop__num">{c["n"]}</span></div>')
         add('    <div class="stop__body">')
         add(f'      <div class="stop__head"><h3>{c["city"]}</h3>'
@@ -920,11 +964,11 @@ def build():
         add('    </article>')
     add('  </div>')
     add('  <div class="fmt-media">')
-    add('    <figure><img src="img/tour/scentbar.jpg" alt="" loading="lazy">'
+    add('    <figure><img src="' + data_uri("img/tour/scentbar.jpg") + '" alt="" loading="lazy">'
         + el("figcaption", "fmt.cap1", "The scent bar — 48 bottles, blind, scored on a card.",
              "De geurbar — 48 flacons, blind, gescoord op een kaart.",
              "Die Duftbar — 48 Flakons, blind, auf einer Karte bewertet.") + '</figure>')
-    add('    <figure><img src="img/tour/studio.jpg" alt="" loading="lazy">'
+    add('    <figure><img src="' + data_uri("img/tour/studio.jpg") + '" alt="" loading="lazy">'
         + el("figcaption", "fmt.cap2",
              "Studio Nine — lit, free, and off limits to our marketing team.",
              "Studio Nine — uitgelicht, gratis, en verboden terrein voor onze marketingafdeling.",
@@ -1153,6 +1197,9 @@ def build():
 
 
 def page_html(body):
+    css = read_asset("css/style.css")
+    i18n = read_asset("js/i18n.js")
+    dict_js = read_asset("js/tour-i18n.js")
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1162,6 +1209,14 @@ def page_html(body):
 <meta name="description" content="ROUTE NINE — the Number Nine pop-up tour through Dortmund, Düsseldorf, Munich and Berlin, spring and summer 2027.">
 <title>ROUTE NINE | Pop-up Tour Germany 2027</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%2315130f%22/%3E%3Ctext%20x%3D%2216%22%20y%3D%2222%22%20text-anchor%3D%22middle%22%20font-family%3D%22Helvetica%2CArial%22%20font-size%3D%2217%22%20font-weight%3D%22700%22%20fill%3D%22%23ffffff%22%3EB%3C/text%3E%3C/svg%3E">
+
+<!-- Ingebakken kopie van css/style.css, zodat deze pagina ook zonder webserver
+     klopt. Staat de site wél op een server, dan laadt de <link> hieronder
+     dezelfde stylesheet opnieuw en wint die versie. Na het aanpassen van
+     css/style.css: python3 build_tour.py -->
+<style>
+{css}
+</style>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -1170,9 +1225,13 @@ def page_html(body):
 {body}
 </main>
 {FOOTER}
+<script>
+{dict_js}
+</script>
+<script>
+{i18n}
+</script>
 <script src="js/data.js"></script>
-<script src="js/tour-i18n.js"></script>
-<script src="js/i18n.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
@@ -1181,10 +1240,14 @@ def page_html(body):
 
 if __name__ == "__main__":
     body = build()
-    (ROOT / "event.html").write_text(page_html(body), encoding="utf-8")
     (ROOT / "js" / "tour-i18n.js").write_text(
         "/* Gegenereerd door build_tour.py — niet handmatig bewerken. */\n"
         "window.__TOUR_I18N__ = " + json.dumps(TX, ensure_ascii=False, indent=1) + ";\n",
         encoding="utf-8")
-    print(f"event.html geschreven ({len(body.splitlines())} regels body)")
-    print(f"js/tour-i18n.js geschreven ({len(TX)} keys × 3 talen)")
+    html = page_html(body)          # leest js/tour-i18n.js terug, dus hierna
+    (ROOT / "event.html").write_text(html, encoding="utf-8")
+    kb = len(html.encode("utf-8")) / 1024
+    print(f"js/tour-i18n.js  {len(TX)} keys x 3 talen")
+    print(f"event.html       {len(body.splitlines())} regels body, {kb:.0f} KB zelfstandig")
+    print("   (css, taalscript en beelden zijn ingebakken — draai dit opnieuw na")
+    print("    een wijziging in css/style.css, js/i18n.js of img/tour/*)")

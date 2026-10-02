@@ -100,6 +100,25 @@ Editing the tour copy:
 python3 build_tour.py      # rewrites event.html + js/tour-i18n.js
 ```
 
+### `event.html` is self-contained on purpose
+
+Unlike the rest of the site, `event.html` has the stylesheet, the language
+script and all seven images **baked into the file** (images as resized JPEG
+data-URIs, ~840 KB total). That means the page looks right with no web server
+at all: double-click it, drop it in a file viewer, or email it to a landlord or
+a sponsor as a single attachment.
+
+When the site *is* served, the `<link rel="stylesheet" href="css/style.css">`
+after the inline `<style>` loads the real stylesheet and wins, so nothing drifts
+at runtime. It does drift at rest, though:
+
+> After editing `css/style.css`, `js/i18n.js` or anything in `img/tour/`,
+> run `python3 build_tour.py` again to refresh the baked-in copies.
+
+Image sizes and JPEG quality are the `IMG_SPECS` table in `build_tour.py`.
+Without Pillow installed the build still works — it falls back to relative
+image paths and says so.
+
 ### Language switcher (EN / NL / DE)
 
 `js/i18n.js` is loaded on every page and powers the ENG / NL / DE switch that was
